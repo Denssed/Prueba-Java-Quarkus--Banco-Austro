@@ -1,0 +1,62 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex max-w-sm flex-col gap-4">
+    <label class="flex flex-col gap-1 text-sm text-gray-700">
+        Cédula
+        <input
+            type="text"
+            formControlName="cedula"
+            maxlength="10"
+            class="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+        />
+        @if (form.controls.cedula.touched && form.controls.cedula.invalid) {
+            <span class="text-xs text-red-600">Cédula inválida, debe tener 10 dígitos</span>
+        }
+    </label>
+
+    <label class="flex flex-col gap-1 text-sm text-gray-700">
+        Monto
+        <input
+            type="number"
+            formControlName="monto"
+            class="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+        />
+        @if (form.controls.monto.touched && form.controls.monto.invalid) {
+            <span class="text-xs text-red-600">Ingrese un monto entre 1 y 100,000</span>
+        }
+    </label>
+
+    <label class="flex flex-col gap-1 text-sm text-gray-700">
+        Plazo (años)
+        <input
+            type="number"
+            formControlName="plazo"
+            class="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+        />
+        @if (form.controls.plazo.touched && form.controls.plazo.invalid) {
+            <span class="text-xs text-red-600">Ingrese un plazo entero entre 1 y 30 años</span>
+        }
+    </label>
+
+    <label class="flex flex-col gap-1 text-sm text-gray-700">
+        Salario
+        <input
+            type="number"
+            formControlName="salario"
+            class="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+        />
+        @if (form.controls.salario.touched && form.controls.salario.invalid) {
+            <span class="text-xs text-red-600">Ingrese un salario entre 1 y 50,000</span>
+        }
+    </label>
+
+    <button
+        type="submit"
+        [disabled]="loading() || form.invalid"
+        class="mt-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+    >
+        @if (loading()) {
+            Evaluando...
+        } @else {
+            Evaluar crédito
+        }
+    </button>
+</form>

@@ -1,0 +1,28 @@
+@if (evaluations().length === 0) {
+    <p class="text-sm text-gray-500">No hay evaluaciones registradas.</p>
+} @else {
+    <table class="w-full border-collapse text-sm">
+        <thead>
+            <tr class="bg-gray-100 text-left">
+                <th class="border border-gray-200 p-2">Cédula</th>
+                <th class="border border-gray-200 p-2">Monto</th>
+                <th class="border border-gray-200 p-2">Plazo</th>
+                <th class="border border-gray-200 p-2">Score</th>
+                <th class="border border-gray-200 p-2">Estado</th>
+                <th class="border border-gray-200 p-2">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (evaluation of evaluations(); track evaluation.id) {
+                <tr>
+                    <td class="border border-gray-200 p-2">{{ evaluation.cedula }}</td>
+                    <td class="border border-gray-200 p-2">{{ evaluation.monto }}</td>
+                    <td class="border border-gray-200 p-2">{{ evaluation.plazo }}</td>
+                    <td class="border border-gray-200 p-2">{{ evaluation.score }}</td>
+                    <td class="border border-gray-200 p-2">{{ evaluation.aprobado ? 'Aprobado' : 'Rechazado' }}</td>
+                    <td class="border border-gray-200 p-2">{{ evaluation.fechaEvaluacion | date: 'short' }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
