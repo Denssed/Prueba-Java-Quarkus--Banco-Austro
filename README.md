@@ -1,5 +1,7 @@
 # Evaluador de Crédito — Banco del Austro
 
+Programador: Jeremy Saul Rodriguez Perez
+
 Proyecto:
 
 - `riesgos-mock` — Microservicio B, simula score y deudas vía gRPC.
